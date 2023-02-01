@@ -6,13 +6,17 @@ const MessageForm = (props) => {
   const { chatId, creds } = props;
 
   const handleSubmit = (event) => {
-    setValue(event.target.value);
+    event.preventDefault();
 
-    isTyping(props, chatId)
+    const text = value.trim();
+
+    if(text.length > 0) sendMessage(creds, chatId, { text });
   }
 
-  const handleChange = () => {
+  const handleChange = (event) => {
+    setValue(event.target.value);
 
+    isTyping(props, chatId);
   }
 
   return (
