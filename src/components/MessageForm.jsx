@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const MessageForm = () => {
+  const [value, setValue] = useState('');
 
   const handleSubmit = () => {
 
-  };
+  }
 
   const handleChange = () => {
 
-  };
+  }
 
   return (
     <form className="message-form" onSubmit={handleSubmit}>
@@ -17,12 +18,10 @@ const MessageForm = () => {
         placeholder="Send a message..."
         value={value}
         onChange={handleChange}
-        >
-      
-      </input>
-
-    </form>>
+        onSubmit={handleSubmit}
+      />
+    </form>
   )
-};
+}
 
 export default MessageForm;
