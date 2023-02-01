@@ -1,5 +1,12 @@
+import MessageForm from './MessageForm';
+import MyMesssage from './MyMessage';
+import TheirMessage from './TheirMessage';
+
+
 const ChatFeed = (props) => {
-console.log(props);
+  const { chats, activeChat, userName, messages} = props;
+
+  const chat = chat && chats[activeChat];
 
 return(
   <div>
