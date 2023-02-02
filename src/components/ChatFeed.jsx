@@ -7,18 +7,21 @@ const ChatFeed = (props) => {
 
   const chat = chats && chats[activeChat];
 
-  const renderReadReceipts = (message, isMyMessage) => {
-    return chat.people.map((person, index) => person.last_read === message.id && (
-      <div 
-        key={`read_${index}`}
-        className="read-reciept"
-        style={{
-          float: isMyMessage ? 'right' : 'left',
-          backgroundImage: message.sender && `url(${person?.person?.avatar})`
-        }}
-      />
-    ))
-  }
+  const renderReadReceipts = (message, isMyMessage) =>
+    chat.people.map(
+      (person, index) =>
+        person.last_read === message.id && (
+          <div
+            key={`read_${index}`}
+            className="read-reciept"
+            style={{
+              float: isMyMessage ? "right" : "left",
+              backgroundImage:
+                person.person.avatar && `url(${person?.person?.avatar})`,
+            }}
+          />
+        )
+    );
 
   const renderMessages = () => {
     const keys = Object.keys(messages);
@@ -31,14 +34,14 @@ const ChatFeed = (props) => {
       return (
         <div key={`msg_${index}`} style={{ width: "100%" }}>
           <div className="message-block">
-            {isMyMessage ?
+            {isMyMessage ? (
               <MyMesssage message={message} />
-            :
+            ) : (
               <TheirMessage
                 message={message}
                 lastMessage={messages[lastMessageKey]}
               />
-            }
+            )}
           </div>
           <div
             className="read-receipts"
@@ -47,7 +50,7 @@ const ChatFeed = (props) => {
               marginLeft: isMyMessage ? "0px" : "68px",
             }}
           >
-          {renderReadReceipts(message, isMyMessage)}
+            {renderReadReceipts(message, isMyMessage)}
           </div>
         </div>
       );
@@ -67,7 +70,7 @@ const ChatFeed = (props) => {
       {renderMessages()}
       <div style={{ height: "100px" }} />
       <div className="message-form-container">
-      <MessageForm {...props} chatId={activeChat} />
+        <MessageForm {...props} chatId={activeChat} />
       </div>
     </div>
   );
