@@ -5,7 +5,9 @@ const LoginForm = () => {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const authObject = { 'Project-ID': '81928b60-b7c0-4b9b-8037-e3ef8002a83f', 'User-Name': username, 'User-Secret': password }
 
   };
 
@@ -23,7 +25,6 @@ const LoginForm = () => {
             </div>
           </form>
       </div>
-
     </div>
   )
 };
