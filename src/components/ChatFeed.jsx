@@ -17,7 +17,7 @@ const ChatFeed = (props) => {
             style={{
               float: isMyMessage ? "right" : "left",
               backgroundImage:
-                person.person.avatar && `url(${person?.person?.avatar})`,
+                person.person.avatar && `url(${person.person.avatar})`,
             }}
           />
         )
@@ -34,14 +34,10 @@ const ChatFeed = (props) => {
       return (
         <div key={`msg_${index}`} style={{ width: "100%" }}>
           <div className="message-block">
-            {isMyMessage ? (
-              <MyMesssage message={message} />
-            ) : (
-              <TheirMessage
-                message={message}
-                lastMessage={messages[lastMessageKey]}
-              />
-            )}
+            {isMyMessage
+            ? <MyMesssage message={message} />
+            : <TheirMessage message={message} lastMessage={messages[lastMessageKey]}/>
+            }
           </div>
           <div
             className="read-receipts"
