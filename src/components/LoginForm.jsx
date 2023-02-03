@@ -18,7 +18,7 @@ const LoginForm = () => {
       window.location.reload();
 
     } catch (error) {
-
+      setError('Incorrect login details.')
     }
   };
 
